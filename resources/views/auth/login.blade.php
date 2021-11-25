@@ -13,10 +13,10 @@
                             </div>
                             <h4 class="mb-3 font-weight-bold">Welcome Student</h4>
                             <p class="mx-0 mx-md-5 mb-4 mm-beauty">
-                                MMS IT ရဲ့ Student Panel ကို ဆက်လက်အသုံးပြုနိုင်ရန် Facebook ဖြင့် Login ဝင်ပေးပါ
+                                MMS IT ရဲ့ Student Panel ကို ဆက်လက်အသုံးပြုနိုင်ရန် Github ဖြင့် Login ဝင်ပေးပါ
                             </p>
                             <div class="">
-                                <a href="https://mms-it.com/auth/facebook" class="btn btn-primary">Login with Facebook</a>
+                                <a href="{{ route("github.login") }}" class="btn btn-primary">Login with GitHub</a>
                             </div>
                         </div>
                     </div>

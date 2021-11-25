@@ -21,7 +21,12 @@
     @yield("head")
 </head>
 <body>
-    <script src="{{ asset("js/app.js") }}"></script>
+
+
+    @yield("content")
+
+
+    <script src="{{ asset("js/bootstrap.js") }}"></script>
     <script>
         function go(l) {
             location.href = `${l}`;

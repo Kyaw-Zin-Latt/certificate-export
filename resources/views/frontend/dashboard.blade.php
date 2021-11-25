@@ -31,45 +31,31 @@
             <div class="d-flex align-items-center justify-content-between v-spacer">
                 <div class="d-flex align-items-center">
                     <div class="mr-2">
-                        <img src="https://graph.facebook.com/v3.3/612272920194383/picture?type=normal" class="rounded-circle profile-img" alt="">
+                        <img src="{{ Auth::user()->photo }}" class="rounded-circle profile-img" alt="">
                     </div>
                     <div class="">
-                        <p class="mb-0 font-weight-bold">Kyaw Zin Latt</p>
-                        <small class="text-email-small my-0">aZYYSUea@fbmail.com</small>
+                        <p class="mb-0 font-weight-bold text-capitalize">{{ Auth::user()->name }}</p>
+                        <small class="text-email-small my-0">{{ Auth::user()->github_id }}</small>
                     </div>
                 </div>
                 <div class="">
-                    <div class="site-menu dropdown">
-                        <button class="btn btn-outline-info btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bars mr-0 mr-md-2"></i> <span class="d-none d-md-inline">Menu</span>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item text-theme" href="https://mms-it.com/student/dashboard">
-                                <i class="fas fa-home fa-fw mr-2"></i> Dashboard
-                            </a>
-                            <a class="dropdown-item" href="https://mms-it.com/student/request-certificate">
-                                <i class="fas fa-box fa-fw mr-2"></i> Certificate ထုတ်ယူရန်
-                            </a>
-                            <a class="dropdown-item" href="https://mms-it.com/student/list">
-                                <i class="fas fa-file-alt fa-fw mr-2"></i> အောင်မြင်ပြီး Certificate
-                            </a>
-
-
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fas fa-lock-open fa-fw mr-2"></i> Logout
-                            </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </div>
-                    <form id="logout-form" action="https://mms-it.com/logout" class="d-none" method="POST">
-                        <input type="hidden" name="_token" value="bEDgsosN7CWz7VflFR8f8i9MvXkIkNgSpfWrMxh0"></form>
                 </div>
             </div>
         </div>
     </div>
     <div class="row my-3">
         <div class="col-12 col-md-4">
-            <div class="card rounded rounded-lg border-0 shadow-sm card-status" onclick="go('{{ route("request-certificate") }}')">
+            <div class="card rounded rounded-lg border-0 shadow-sm card-status" onclick="go('{{ route("certificate.index") }}')">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="">

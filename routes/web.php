@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GitHubController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix("student")->group(function (){
+Route::prefix("student")->middleware("auth")->group(function (){
 
 
-
+    Route::resource("certificate",\App\Http\Controllers\ExportCertificateController::class);
     Route::view("dashboard","frontend/dashboard")->name("dashboard");
     Route::view("request-certificate","frontend/request-certificate")->name("request-certificate");
 
@@ -31,5 +33,8 @@ Route::prefix("student")->group(function (){
 
 
 Auth::routes();
+
+Route::get('auth/github', [GitHubController::class, 'gitHubLogin'])->name("github.login");
+Route::get('auth/github/callback', [GitHubController::class, 'gitHubCallback'])->name("github.callback");
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
