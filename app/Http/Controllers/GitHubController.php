@@ -18,10 +18,11 @@ class GitHubController extends Controller
 
         $user = Socialite::driver('github')->user();
         $gitUser = new User();
+        $searchUser = User::where('github_id',$user->id)->first();
 
-        if ($gitUser->github_id == $user->id) {
+        if ($searchUser) {
 
-            Auth::login($gitUser);
+            Auth::login($searchUser);
             return redirect()->route("dashboard");
 
         } else {
@@ -38,8 +39,6 @@ class GitHubController extends Controller
             return redirect()->route("dashboard");
 
         }
-
-//        return redirect()->route("dashboard");
 
     }
 

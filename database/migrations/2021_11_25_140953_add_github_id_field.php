@@ -14,7 +14,7 @@ class AddGithubIdField extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('github_id')->nullable();
+            $table->integer('github_id')->nullable();
             $table->string('auth_type')->nullable();
         });
     }

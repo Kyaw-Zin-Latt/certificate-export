@@ -46,7 +46,10 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <form action="{{ route("logout") }}" class="dropdown-item" style="cursor: pointer" method="post">
+                                @csrf
+                                <button>Logout</button>
+                            </form>
                         </div>
                     </div>
                 </div>

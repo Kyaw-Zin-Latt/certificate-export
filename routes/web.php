@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportCertificateController;
 use App\Http\Controllers\GitHubController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,11 @@ Route::get('/', function () {
 Route::prefix("student")->middleware("auth")->group(function (){
 
 
+    Route::post("certificate-export",[\App\Http\Controllers\ExportCertificateController::class,'export'])->name("certificate.export");
     Route::resource("certificate",\App\Http\Controllers\ExportCertificateController::class);
     Route::view("dashboard","frontend/dashboard")->name("dashboard");
     Route::view("request-certificate","frontend/request-certificate")->name("request-certificate");
+    Route::post("download/{id}",[ExportCertificateController::class,"download"])->name("download.file");
 
 });
 

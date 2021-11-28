@@ -72,9 +72,39 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <form action="{{ route("certificate.export") }}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="file" name="photo" class="form-control p-1">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" name="name" placeholder="Your Name" class="form-control">
+                                </div>
+                                <button class="btn btn-primary">Add Certificate</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="my-3">
+                            <div class="card-columns">
+                                @foreach($exportCertificate as $photo)
+                                    <div class="card">
+                                        <img src="{{ asset("certificates/$photo->file_name") }}" class="card-img w-100" alt="">
+                                        <div class="card-footer p-1">
+                                            <form action="{{ route("download.file",$photo->id) }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $photo->id }}">
+                                                <button class="btn btn-success">Download</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
 
                     </div>
                 </div>
+
             </div>
         </div>
 

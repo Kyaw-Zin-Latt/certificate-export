@@ -15,6 +15,9 @@ class CreateExportCertificatesTable extends Migration
     {
         Schema::create('export_certificates', function (Blueprint $table) {
             $table->id();
+            $table->string("file_path");
+            $table->string("file_name");
+            $table->integer("user_id");
             $table->timestamps();
         });
     }
