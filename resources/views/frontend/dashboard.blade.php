@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="col-12 col-md-4">
-            <div class="card rounded rounded-lg border-0 shadow-sm">
+            <div class="card rounded rounded-lg border-0 shadow-sm card-status" onclick="go('{{ route("certificate.design") }}')">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="">

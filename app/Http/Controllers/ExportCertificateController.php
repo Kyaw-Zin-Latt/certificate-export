@@ -17,28 +17,56 @@ class ExportCertificateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function design() {
+        return view("frontend.certificate-design");
+    }
+
     public function export(Request $request) {
+
         $file = $request->file("photo");
         $name = $request->name;
+        $nrc = $request->nrc;
+        $verifyCode = Auth::user()->github_id;
+        $courseName = $request->course_name;
         $newName = uniqid()."_".$file->getClientOriginalName();
         $img = Image::make($file);
-        $img->text($name, 1800, 1500, function($font) {
-            $font->file(public_path("Roboto-Regular.ttf"));
-            $font->size(120);
-            $font->color('#00a387');
-            $font->align('center');
-            $font->valign('top');
-        });
-//        $img->text('Kyaw Zin Latt', 2000, 1600, function($font) {
+        $waterMark = Image::make(Auth::user()->photo);
+        $waterMark->resize("70","70");
+        $img->insert($waterMark,'top-left',115,310);
+//        $img->text($name, 1800, 1500, function($font) {
 //            $font->file(public_path("Roboto-Regular.ttf"));
 //            $font->size(120);
-//            $font->color('#00a387');
+//            $font->color('#000');
 //            $font->align('center');
 //            $font->valign('top');
 //        });
+        $img->text($nrc, 351, 313, function($font) {
+            $font->file(public_path("google-fonts/Montserrat-Medium.ttf"));
+            $font->size(12);
+            $font->color('#000');
+            $font->align('center');
+            $font->valign('top');
+        });
+        $img->text($verifyCode, 313, 333, function($font) {
+            $font->file(public_path("google-fonts/Montserrat-Medium.ttf"));
+            $font->size(12);
+            $font->color('#000');
+            $font->align('center');
+            $font->valign('top');
+        });
+        $img->text($courseName, 253, 423, function($font) {
+            $font->file(public_path("google-fonts/Montserrat-Bold.ttf"));
+            $font->size(25);
+            $font->color('#009eff');
+            $font->align('center');
+            $font->valign('top');
+        });
 
+        //save in local
         $img->save("certificates/".$newName);
 
+        //save in db
         $exportCertificate = new ExportCertificate();
         $exportCertificate->file_path = public_path("certificates/".$newName);
         $exportCertificate->file_name = $newName;

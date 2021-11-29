@@ -81,7 +81,15 @@
                                 <div class="col-3">
                                     <input type="text" name="name" placeholder="Your Name" class="form-control">
                                 </div>
-                                <button class="btn btn-primary">Add Certificate</button>
+                                <div class="col-3">
+                                    <input type="text" name="nrc" placeholder="Your NRC" class="form-control">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" name="course_name" placeholder="Course Name" class="form-control">
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <button class="btn btn-primary w-100">Export Certificate</button>
+                                </div>
                             </div>
                         </form>
                         <hr>

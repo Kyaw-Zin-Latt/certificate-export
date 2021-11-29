@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::prefix("student")->middleware("auth")->group(function (){
 
-
+    Route::get("certificate-design",[ExportCertificateController::class,"design"])->name("certificate.design");
     Route::post("certificate-export",[\App\Http\Controllers\ExportCertificateController::class,'export'])->name("certificate.export");
     Route::resource("certificate",\App\Http\Controllers\ExportCertificateController::class);
     Route::view("dashboard","frontend/dashboard")->name("dashboard");
